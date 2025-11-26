@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96bbc75c427bef749a82522afd99930b, type: 3}
+  m_Name: EscortQuest
+  m_EditorClassIdentifier: 
+  questID: quest_escort_npc
+  questName: Find Child
+  description: Find Child lost in forest
+  questType: 2
+  status: 3
+  enemyNameToKill: 
+  enemiesToKill: 0
+  currentKillCount: 0
+  itemNameToCollect: 
+  itemsToCollect: 0
+  currentCollectCount: 0
+  npcToEscortName: Child
+  escortDestinationNPCName: Elena
+  hasFoundNPC: 1
+  npcReachedDestination: 1
+  questGiverNPCName: Elena
+  questTurnInNPCName: Elena
