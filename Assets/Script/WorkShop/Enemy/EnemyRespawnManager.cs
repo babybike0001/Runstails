@@ -10,11 +10,7 @@ public class EnemyRespawnManager : MonoBehaviour
     
     [Header("Spawn Position")]
     [SerializeField] private Transform spawnPoint;
-    
-    [Header("Visual Effects (Optional)")]
-    [SerializeField] private GameObject spawnEffectPrefab;
-    [SerializeField] private GameObject deathEffectPrefab;
-    
+   
     [Header("Sound Effects (Optional)")]
     [SerializeField] private AudioClip respawnSound;
     [SerializeField] [Range(0f, 1f)] private float respawnSoundVolume = 1f;
@@ -97,8 +93,6 @@ public class EnemyRespawnManager : MonoBehaviour
     
     private void OnEnemyDeath(Idestoryable destroyed)
     {
-        PlayDeathEffect();
-        
         if (autoRespawn && !isRespawning)
         {
             StartCoroutine(RespawnCoroutine());
@@ -122,8 +116,6 @@ public class EnemyRespawnManager : MonoBehaviour
         {
             return;
         }
-        
-        PlaySpawnEffect();
         PlayRespawnSound();
         
         currentEnemy = Instantiate(enemyPrefab, originalPosition, originalRotation);
@@ -167,24 +159,7 @@ public class EnemyRespawnManager : MonoBehaviour
             enemy.SetSpawnPosition(originalPosition);
         }
     }
-    
-    private void PlayDeathEffect()
-    {
-        if (deathEffectPrefab != null)
-        {
-            GameObject effect = Instantiate(deathEffectPrefab, originalPosition, Quaternion.identity);
-            Destroy(effect, 3f);
-        }
-    }
-    
-    private void PlaySpawnEffect()
-    {
-        if (spawnEffectPrefab != null)
-        {
-            GameObject effect = Instantiate(spawnEffectPrefab, originalPosition, Quaternion.identity);
-            Destroy(effect, 3f);
-        }
-    }
+   
     
     private void PlayRespawnSound()
     {

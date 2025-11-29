@@ -529,7 +529,7 @@ public class DialogSystem : MonoBehaviour
 
     private void FreezePlayer()
     {
-        Player player = FindObjectOfType<Player>();
+        Player player = FindFirstObjectByType<Player>();
         if (player != null)
         {
             player.SetCanMove(false);
@@ -538,7 +538,7 @@ public class DialogSystem : MonoBehaviour
 
     private void UnfreezePlayer()
     {
-        Player player = FindObjectOfType<Player>();
+        Player player = FindFirstObjectByType<Player>();
         if (player != null)
         {
             player.SetCanMove(true);
