@@ -25,38 +25,7 @@ public class NPCQuestGiver : Identity, IInteractable
     [Header("Visual Indicators")]
     public GameObject questAvailableIndicator;
     public GameObject questCompleteIndicator;
-    
-    private void Start()
-    {
-        SetUP();
-        UpdateIndicators();
-        
-        if (QuestManager.Instance != null)
-        {
-            QuestManager.Instance.OnQuestStarted += OnQuestStatusChanged;
-            QuestManager.Instance.OnQuestCompleted += OnQuestStatusChanged;
-            QuestManager.Instance.OnQuestTurnedIn += OnQuestStatusChanged;
-        }
-    }
-    
-    private void OnDestroy()
-    {
-        if (QuestManager.Instance != null)
-        {
-            QuestManager.Instance.OnQuestStarted -= OnQuestStatusChanged;
-            QuestManager.Instance.OnQuestCompleted -= OnQuestStatusChanged;
-            QuestManager.Instance.OnQuestTurnedIn -= OnQuestStatusChanged;
-        }
-    }
-    
-    private void OnQuestStatusChanged(Quest quest)
-    {
-        if (quest == questToGive)
-        {
-            UpdateIndicators();
-        }
-    }
-    
+   
     private void UpdateIndicators()
     {
         if (questToGive == null) return;
@@ -69,13 +38,6 @@ public class NPCQuestGiver : Identity, IInteractable
             );
         }
         
-        if (questCompleteIndicator != null)
-        {
-            questCompleteIndicator.SetActive(
-                canTurnInQuest && 
-                questToGive.status == QuestStatus.Completed
-            );
-        }
     }
     
     public void Interact(Player player)
